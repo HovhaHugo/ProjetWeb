@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-light navbar-light">
     <!--En tete de la page-->
-    <a class="navbar-brand" href="index.php?uc=acceuil" >Mon Site</a>
+    <a class="navbar-brand" href="index.php?uc=acceuil" >Gestion des maison</a>
 
     <!--Gestion du menu sur mobile-->
     <button type="button" class="navbar-toggler" data-toggle="collapse"

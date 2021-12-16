@@ -25,9 +25,25 @@ and open the template in the editor.
         //require_once 'passerelles/Pdo_Utilisateur.php';
 
         include 'vues/V_nav.php';
-        include 'vues/V_home.php';
+        if (!isset($_REQUEST['uc'])) {
+            $_REQUEST['uc'] = 'accueil';
+        }
+        //"index.php" recupere le cas d'utilisation sollicité par l'utilisateur
+        $uc = $_REQUEST["uc"];
 
-
+        switch ($uc) {
+            //Oriente vers le controleur "C_fonctonnalite_publique.php"
+            //case 'fonctionnalite_publique':
+                //include 'controleurs/C_fonctionnalite_publique.php';
+                //break;
+            //Oriente vers le controleur "C_authentification.php"
+            case "authentification":
+                include 'controleurs/C_authentification.php';
+                break;
+            default :
+                include 'vues/V_home.php';
+                break;
+        }
         ?>
 
         <!--Liaison avec le kit Fontawesome-->
