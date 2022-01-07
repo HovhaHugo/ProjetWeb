@@ -1,6 +1,4 @@
 <?php
-require("modele/M_Utilisateur.php");
-
 if (!isset($_REQUEST['action'])) {
     $_REQUEST['action'] = 'accueil';
 }
@@ -18,19 +16,19 @@ switch ($action) {
         $login = $_POST["login"];
         $mdp = $_POST["mdp"];
 
-        echo $result = getUtilisateur($login, $mdp);
         //appel à la passerelle
-        /*$result = getUtilisateur($login, $mdp);
+        $result = M_Utilisateur::getUtilisateur($login, $mdp);
 
         if ($result) {
-            $_SESSION['login'] = $result[0]["login"];
+            echo($result[0]["nom"]);
+            $_SESSION['nom'] = $result[0]["nom"];
+            $_SESSION['prenom']= $result[0]["prenom"];
             header('Location: index.php');
         } else {
             session_destroy();
             header('Location: index.php');
             include 'vues/V_connexion.php';
-        }*/
-
+        }
         break;
     case "se_deconnecter":
         session_destroy();

@@ -21,8 +21,8 @@ and open the template in the editor.
         session_start();
 
         //Permet de charger les fichiers necessaires pour l'accés a la table "utilisateur" de la base de données
-        //require_once 'passerelles/Pdo_Connexion_bdexemple.php';
-        //require_once 'passerelles/Pdo_Utilisateur.php';
+        require_once 'modele/M_connexion.php';
+        require_once 'modele/M_Utilisateur.php';
 
         include 'vues/V_nav.php';
         if (!isset($_REQUEST['uc'])) {
@@ -32,10 +32,6 @@ and open the template in the editor.
         $uc = $_REQUEST["uc"];
 
         switch ($uc) {
-            //Oriente vers le controleur "C_fonctonnalite_publique.php"
-            //case 'fonctionnalite_publique':
-                //include 'controleurs/C_fonctionnalite_publique.php';
-                //break;
             //Oriente vers le controleur "C_authentification.php"
             case "authentification":
                 include 'controleurs/C_authentification.php';
