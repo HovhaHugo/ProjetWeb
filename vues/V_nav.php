@@ -21,7 +21,7 @@
             ?>
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown">Propiéter</a>
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown">Propriétés</a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="index.php?uc=liste_utilisateurs">Liste des utilisateurs</a>
                         <a class="dropdown-item" href="index.php?uc=fonctionnalite2">Fonctionnalité 2</a>
@@ -37,6 +37,20 @@
                     </div>
                 </li>
             </ul>
+            <?php
+                //Gestion du cas d'un administrateur
+            if (isset($_SESSION["admin"])) {
+                ?>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Administrateurs</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="index.php?uc=liste_utilisateurs">Liste des utilisateurs</a>
+                        </div>
+                    </li>
+                </ul>
+            <?php }
+            ?>
 
             <ul class="navbar-nav ml-auto">
                 <!--Balise href pour le login de l'utilisation pour la presentation !-->

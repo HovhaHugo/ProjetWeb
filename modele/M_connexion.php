@@ -14,7 +14,7 @@
 class M_connexion {
 
     private static $strServeur = 'mysql:host=localhost';
-    private static $strBdd = 'dbname=GestionMaison';
+    private static $strBdd = 'dbname=ProjetWeb';
     private static $strUser = 'root';
     private static $strMdp = 'root';
     private static $objPdo;

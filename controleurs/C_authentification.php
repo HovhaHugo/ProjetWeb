@@ -23,6 +23,9 @@ switch ($action) {
             echo($result[0]["nom"]);
             $_SESSION['nom'] = $result[0]["nom"];
             $_SESSION['prenom']= $result[0]["prenom"];
+            if($result[0]["administrateur"] == 1){
+                $_SESSION['admin']= true;
+            }
             header('Location: index.php');
         } else {
             session_destroy();
