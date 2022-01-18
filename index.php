@@ -39,6 +39,12 @@ and open the template in the editor.
             case "inscription":
                 include 'controleurs/C_inscription.php';
                 break;
+            case "administrateur":
+                include 'controleurs/C_administrateur.php';
+                break;
+            case "utilisateur":
+                include 'controleurs/C_utilisateur.php';
+                break;
             default :
                 include 'vues/V_home.php';
                 break;

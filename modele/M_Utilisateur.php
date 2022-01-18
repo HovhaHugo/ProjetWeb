@@ -38,29 +38,42 @@ class M_Utilisateur{
 
     }
 
-    public static function setUtilisateur($nom, $prenom, $birthday, $genre, $phone, $mdp)
+    public static function setUtilisateur($mail, $nom, $prenom, $birthday, $genre, $phone, $mdp)
     {
 
         //on recupere une instance de la classe M_connexion qui etablit une connexion à la base de données
         $objPdo = M_connexion::getPdoConnexion();
-        $idUser = date_timestamp_get().$nom[0].$prenom[0];
+        $date = new DateTime();
+        $idUser =  $date->getTimestamp().$nom[0].$prenom[0];
+        $today = date('Y-m-d');
+        $etat = "A";
 
         //cryptage de la valeur du mots de passe
         $mdp = sha1($mdp);
 
         //definition de la requete SQL à éxecuter
-        /*$sql = 'INSERT INTO Utilisateur VALUES(:nom, :prenom,  )';
+        $sql = 'INSERT INTO Utilisateur(idUtilisateur, dateCreationCompte, mailCompte, etatCompte, nom, prenom, dateNaissance, genre, numTel, motDePasse)'.
+            'VALUES(:idUser, :today, :etat, :mail, :nom, :prenom, :birthday, :genre, :phone, :mdp)';
 
         //demande d'execution de la requete passer en parametre
         $statement = $objPdo->prepare($sql);
 
         $statement->execute([
-            ':nom' => $nom
-        ]);*/
+            ':idUser' => $idUser,
+            ':today' => $today,
+            ':etat' => $etat,
+            ':mail' => $mail,
+            ':nom' => $nom,
+            ':prenom' => $prenom,
+            ':birthday' => $birthday,
+            ':genre' => $genre,
+            ':phone' => $phone,
+            ':mdp' => $mdp
+        ]);
 
         //retourne un tableau contenant toutes les lignes du jeu d'enregistrements
         //ou un tableau vide si aucun enregistrement sont trouvés
-        return $idUser;
+        return $today;
 
     }
 

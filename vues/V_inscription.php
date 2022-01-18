@@ -13,6 +13,10 @@
             <input type="text" name="surname" class="form-control" placeholder="John">
         </div>
         <div class="form-group col-md-4">
+            <label for="surname">Mail</label>
+            <input type="email" name="mail" class="form-control" placeholder="exemple@xyz.fr">
+        </div>
+        <div class="form-group col-md-4">
             <label for="birthday">Date de naissance</label>
             <input type="date" name="birthday" class="form-control" id="date" placeholder="YYYY-MM-DD">
         </div>

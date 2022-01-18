@@ -45,7 +45,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown">Administrateurs</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="index.php?uc=liste_utilisateurs">Liste des utilisateurs</a>
+                            <a class="dropdown-item" href="index.php?uc=administrateur&action=affichage">Liste des utilisateurs</a>
                         </div>
                     </li>
                 </ul>
@@ -54,7 +54,7 @@
 
             <ul class="navbar-nav ml-auto">
                 <!--Balise href pour le login de l'utilisation pour la presentation !-->
-                <li class='nav-item'><a class="nav-link" href="#"><span class="fas fa-user"></span>
+                <li class='nav-item'><a class="nav-link" href="index.php?uc=utilisateur&action=affichage"><span class="fas fa-user"></span>
                         <?php echo " M." . $_SESSION['prenom'] ." ". $_SESSION['nom'] ; ?></a></li>
                 <li class='nav-item'><a class="nav-link" href="index.php?uc=authentification&action=se_deconnecter">
                         Se deconnecter<span class="fas fa-sign-in-alt"></span></a></li>

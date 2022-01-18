@@ -8,11 +8,11 @@ $action = $_REQUEST["action"];
 
 switch ($action) {
 
-    case 'inscription':
-        include 'vues/V_inscription.php';
+    case 'affichage':
+        include 'vues/V_utilisateur.php';
         break;
 
-    case 'valid_inscription':
+    case 'modification':
 
         $nom = $_POST["firstname"];
         $prenom = $_POST["surname"];
@@ -43,3 +43,4 @@ switch ($action) {
         break;
 }
 ?>
+
