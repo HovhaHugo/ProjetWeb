@@ -14,7 +14,7 @@
             <input type="password" name="mdp" class="form-control" id="password" placeholder="Indiquer votre mot de passe">
         </div>
         <button type="submit" class="btn btn-primary">Connexion</button>
-        <br><a href="index.php?uc=inscription&action=inscription">Inscriptions</a>
+        <br><a href="index.php?uc=inscription&action=inscription">Inscription</a>
     </form>
 
 </div>
