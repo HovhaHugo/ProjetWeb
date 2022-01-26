@@ -12,10 +12,6 @@
     <!--Liste des element dans le menu-->
     <div class="collapse navbar-collapse" id="menu">
 
-        <!--Fait le lien au fichier "index" avec le cas d'utilisation (uc) "fonctionnalite_publique"-->
-        <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="index.php?uc=fonctionnalite_publique">Recherche de maison</a></li>
-        </ul>
         <?php
         if (isset($_SESSION["nom"])) {
             ?>
