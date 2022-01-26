@@ -3,17 +3,21 @@ if (!isset($_REQUEST['action'])) {
     $_REQUEST['action'] = 'accueil';
 }
 
-//"index.php" recupere le cas d'utilisation (fonctionnalite_publique) sollicité par l'utilisateur
+//"index.php" recupere le cas d'utilisation sollicité par l'utilisateur
 $action = $_REQUEST["action"];
 
 switch ($action) {
 
-    case 'affichage':
+    //Affichage des utilisateurs
+    case 'utilisateur':
+        $utilisateur = M_Utilisateur::getUtilisateurs();
+        //print_r($utilisateur);
         include 'vues/V_administrateur.php';
         break;
-    case 'modification':
-        break;
-    case 'suppression':
+
+    //Affichage des statistiques
+    case 'statistique':
+        include 'vues/V_statistique.php';
         break;
 }
 ?>

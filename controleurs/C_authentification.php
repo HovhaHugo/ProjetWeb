@@ -3,7 +3,7 @@ if (!isset($_REQUEST['action'])) {
     $_REQUEST['action'] = 'accueil';
 }
 
-//"index.php" recupere le cas d'utilisation (fonctionnalite_publique) sollicité par l'utilisateur
+//"index.php" recupere le cas d'utilisation sollicité par l'utilisateur
 $action = $_REQUEST["action"];
 
 switch ($action) {
@@ -17,12 +17,12 @@ switch ($action) {
         $mdp = $_POST["mdp"];
 
         //appel à la passerelle
-        $result = M_Utilisateur::getUtilisateur($login, $mdp);
+        $result = M_Utilisateur::getUtilisateurByLogin($login, $mdp);
 
         if ($result) {
-            //echo($result[0]["nom"]);
             $_SESSION['nom'] = $result[0]["nom"];
             $_SESSION['prenom']= $result[0]["prenom"];
+            $_SESSION['id']= $result[0]["idUtilisateur"];
             if($result[0]["administrateur"] == 1){
                 $_SESSION['admin']= true;
             }

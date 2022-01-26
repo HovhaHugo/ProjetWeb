@@ -2,6 +2,26 @@
 if (!isset($_REQUEST['action'])) {
     $_REQUEST['action'] = 'accueil';
 }
+//"index.php" recupere le cas d'utilisation  sollicité par l'utilisateur
+$action = $_REQUEST["action"];
+
+switch ($action) {
+
+    case 'location':
+
+        include 'vues/V_appartement.php';
+        break;
+
+    case 'propriete':
+
+        include 'vues/V_appartement.php';
+        break;
+
+    case 'publique'://à voir si on as le temps.
+
+        include 'vues/V_appartement.php';
+        break;
+}
 
 
 //appel à la passerelle

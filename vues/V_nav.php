@@ -23,8 +23,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown">Propriétés</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="index.php?uc=liste_utilisateurs">Liste des utilisateurs</a>
-                        <a class="dropdown-item" href="index.php?uc=fonctionnalite2">Fonctionnalité 2</a>
+                        <a class="dropdown-item" href="index.php?uc=appartement&action=propriete">Liste des appartements</a>
                     </div>
                 </li>
             </ul>
@@ -32,8 +31,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown">Locations</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="index.php?uc=liste_utilisateurs">Liste des utilisateurs</a>
-                        <a class="dropdown-item" href="index.php?uc=fonctionnalite2">Fonctionnalité 2</a>
+                        <a class="dropdown-item" href="index.php?uc=liste_utilisateurs">Liste des appartements</a>
                     </div>
                 </li>
             </ul>
@@ -45,7 +43,8 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown">Administrateurs</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="index.php?uc=administrateur&action=affichage">Liste des utilisateurs</a>
+                            <a class="dropdown-item" href="index.php?uc=administrateur&action=utilisateur">Liste des utilisateurs</a>
+                            <a class="dropdown-item" href="index.php?uc=administrateur&action=statistique">Statistique</a>
                         </div>
                     </li>
                 </ul>

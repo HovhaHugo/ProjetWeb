@@ -3,45 +3,16 @@ if (!isset($_REQUEST['action'])) {
     $_REQUEST['action'] = 'accueil';
 }
 
-//"index.php" recupere le cas d'utilisation (fonctionnalite_publique) sollicité par l'utilisateur
+//"index.php" recupere le cas d'utilisation sollicité par l'utilisateur
 $action = $_REQUEST["action"];
 
 switch ($action) {
 
+    //Affichage des données de l'utilisateur.
     case 'affichage':
-        $result = M_Utilisateur::getUtilisateurByName($_SESSION["nom"],$_SESSION["prenom"]);
-        print_r($result);
+        $resultat = M_Utilisateur::getUtilisateurByName($_SESSION["nom"],$_SESSION["prenom"]);
+        $utilisateur= $resultat[0];
         include 'vues/V_utilisateur.php';
-        break;
-
-    case 'modification':
-
-        $nom = $_POST["firstname"];
-        $prenom = $_POST["surname"];
-        $birthday = $_POST["birthday"];
-        $sexe = $_POST["sexe"];
-        $mail = $_POST["mail"];
-        $phone = $_POST["phone"];
-        $mdp = $_POST["mdp"];
-        $date = new DateTime();
-
-
-        //appel à la passerelle
-        $result = M_Utilisateur::setUtilisateur($mail, $nom, $prenom, $birthday, $sexe, $phone, $mdp);
-
-        if ($result) {
-            echo("Initial : ".$nom[0].$prenom[0]."       Id = ".$date->getTimestamp().$result);
-            $_SESSION['nom'] = $result[0]["nom"];
-            $_SESSION['prenom']= $result[0]["prenom"];
-            if($result[0]["administrateur"] == 1){
-                $_SESSION['admin']= true;
-            }
-            header('Location: index.php');
-        } else {
-            session_destroy();
-            header('Location: index.php');
-            include 'vues/V_connexion.php';
-        }
         break;
 }
 ?>

@@ -29,6 +29,7 @@ class M_Appartement{
             else
                 $table='DateProprietaire';
 
+            //Différence entre user et admin.
             $target = '';
             if($estAdmin==false)
                 $target = 'idUtilisateur='.$idUtilisateur;
@@ -43,7 +44,7 @@ class M_Appartement{
             INNER JOIN Ville USING(idVille)';
 
             if($target!='')
-                $req = $req.' AND '.$target;
+                $req = $req.' Where '.$target;
 
 
             //demande d'execution de la requete passee en parametre
