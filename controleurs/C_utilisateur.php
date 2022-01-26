@@ -9,6 +9,8 @@ $action = $_REQUEST["action"];
 switch ($action) {
 
     case 'affichage':
+        $result = M_Utilisateur::getUtilisateurByName($_SESSION["nom"],$_SESSION["prenom"]);
+        print_r($result);
         include 'vues/V_utilisateur.php';
         break;
 

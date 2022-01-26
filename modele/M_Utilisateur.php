@@ -38,6 +38,30 @@ class M_Utilisateur{
 
     }
 
+    public static function getUtilisateurByName($name, $surname)
+    {
+
+        //on recupere une instance de la classe M_connexion qui etablit une connexion à la base de données
+        $objPdo = M_connexion::getPdoConnexion();
+
+        //definition de la requete SQL à éxecuter
+        $req = "SELECT mailCompte, nom, prenom, dateNaissance, genre, numTel  FROM Utilisateur where nom = '$name' and prenom = '$surname'";
+
+        //demande d'execution de la requete passer en parametre
+        $res = $objPdo->query($req);
+
+        //on recupere le resultat de la requete dans la variable $utilisateur
+        $utilisateur = $res->fetchAll();
+
+        //ferme le curseur ce qui permet à la requete d'etre de nouveau executée
+        $res->closeCursor();
+
+        //retourne un tableau contenant toutes les lignes du jeu d'enregistrements
+        //ou un tableau vide si aucun enregistrement sont trouvés
+        return $utilisateur;
+
+    }
+
     public static function setUtilisateur($mail, $nom, $prenom, $birthday, $genre, $phone, $mdp)
     {
 
@@ -53,7 +77,7 @@ class M_Utilisateur{
 
         //definition de la requete SQL à éxecuter
         $sql = 'INSERT INTO Utilisateur(idUtilisateur, dateCreationCompte, mailCompte, etatCompte, nom, prenom, dateNaissance, genre, numTel, motDePasse)'.
-            'VALUES(:idUser, :today, :etat, :mail, :nom, :prenom, :birthday, :genre, :phone, :mdp)';
+            'VALUES(:idUser, :today, :mail, :etat, :nom, :prenom, :birthday, :genre, :phone, :mdp)';
 
         //demande d'execution de la requete passer en parametre
         $statement = $objPdo->prepare($sql);
@@ -83,7 +107,7 @@ class M_Utilisateur{
         $objPdo = M_connexion::getPdoConnexion();
 
         //definition de la requete SQL à éxecuter
-        $req = "SELECT nom, prenom FROM Utilisateur ";
+        $req = "SELECT nom, prenom FROM Utilisateur";
 
         //demande d'execution de la requete passer en parametre
         $res = $objPdo->query($req);
