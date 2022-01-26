@@ -3,7 +3,7 @@
 /**
  * Classes d'accés a des stats diverses
  */
-class M_Statistiques{
+class M_statistiques{
 
 
     public static function getRepartitionParAge()
@@ -17,7 +17,7 @@ class M_Statistiques{
             SUM(CASE WHEN age BETWEEN 25 AND 45 THEN 1 ELSE 0 END) AS '24-45',
             SUM(CASE WHEN age BETWEEN 46 AND 65 THEN 1 ELSE 0 END) AS '45-65',
             SUM(CASE WHEN age> 65 THEN 1 ELSE 0 END) AS '+65'
-            FROM AgeUtilisateur";
+            FROM ageutilisateur";
 
             $res = $objPdo->query($req);
             $resultat = $res->fetchAll();
@@ -31,7 +31,7 @@ class M_Statistiques{
     {
         $objPdo = M_connexion::getPdoConnexion();
 
-        $req = "SELECT COUNT(idUtilisateur) AS 'NbInscription', MONTH(dateCreationCompte) AS 'Mois',YEAR(dateCreationCompte) AS 'Annee' FROM Utilisateur
+        $req = "SELECT COUNT(idUtilisateur) AS 'NbInscription', MONTH(dateCreationCompte) AS 'Mois',YEAR(dateCreationCompte) AS 'Annee' FROM utilisateur
         GROUP BY YEAR(dateCreationCompte),MONTH(dateCreationCompte)
         ORDER BY YEAR(dateCreationCompte),MONTH(dateCreationCompte)";
 
@@ -47,11 +47,11 @@ class M_Statistiques{
     {
         $objPdo = M_connexion::getPdoConnexion();
 
-        $req = "SELECT nomDep AS 'Departement', COUNT(idAppartement) AS 'nbAppartement' FROM Appartement 
-        INNER JOIN Maison USING(idMaison)
-        INNER JOIN Rue USING(idRue)
-        INNER JOIN Ville USING(idVille)
-        INNER JOIN Departement USING(numDep)
+        $req = "SELECT nomDep AS 'Departement', COUNT(idAppartement) AS 'nbAppartement' FROM appartement 
+        INNER JOIN maison USING(idMaison)
+        INNER JOIN rue USING(idRue)
+        INNER JOIN ville USING(idVille)
+        INNER JOIN departement USING(numDep)
         GROUP BY nomDep
         ORDER BY COUNT(idAppartement)";
 
@@ -67,7 +67,7 @@ class M_Statistiques{
     {
         $objPdo = M_connexion::getPdoConnexion();
 
-        $req = "SELECT COUNT(*) AS 'NbTotalAppartement' FROM Appartement";
+        $req = "SELECT COUNT(*) AS 'NbTotalAppartement' FROM appartement";
 
         $res = $objPdo->query($req);
         $resultat = $res->fetchAll();
@@ -81,7 +81,7 @@ class M_Statistiques{
     {
         $objPdo = M_connexion::getPdoConnexion();
 
-        $req = "SELECT COUNT(*) AS 'NbTotalAppareil' FROM Appareil";
+        $req = "SELECT COUNT(*) AS 'NbTotalAppareil' FROM appareil";
 
         $res = $objPdo->query($req);
         $resultat = $res->fetchAll();
@@ -97,9 +97,9 @@ class M_Statistiques{
 
         $req = "SELECT AVG(nombre.nbAppareil)
         FROM (SELECT COUNT(idAppareil) AS 'nbAppareil'
-	        FROM Appartement A
-	        INNER JOIN Piece USING(idAppartement)
-	        INNER JOIN Appareil USING(idPiece)
+	        FROM appartement A
+	        INNER JOIN piece USING(idAppartement)
+	        INNER JOIN appareil USING(idPiece)
 	        GROUP BY A.idAppartement
 	        ) as nombre";
 

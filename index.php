@@ -22,7 +22,9 @@ and open the template in the editor.
 
         //Permet de charger les fichiers necessaires pour l'accés a la table "utilisateur" de la base de données
         require_once 'modele/M_connexion.php';
-        require_once 'modele/M_Utilisateur.php';
+        require_once 'modele/M_utilisateur.php';
+        require_once 'modele/M_appartement.php';
+        require_once 'modele/M_statistiques.php';
 
         include 'vues/V_nav.php';
         if (!isset($_REQUEST['uc'])) {
@@ -44,6 +46,9 @@ and open the template in the editor.
                 break;
             case "utilisateur":
                 include 'controleurs/C_utilisateur.php';
+                break;
+            case "appartement":
+                include 'controleurs/C_appartement.php';
                 break;
             default :
                 include 'vues/V_home.php';

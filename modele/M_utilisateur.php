@@ -4,7 +4,7 @@
  * Classes d'accés aux données
  * Gére la table utilisateur
  */
-class M_Utilisateur{
+class M_utilisateur{
 
     /**
      * @brief Fonction permettant de récuperer les utilisateur via leur login et mot de passe
@@ -22,7 +22,7 @@ class M_Utilisateur{
             $mdp = sha1($mdp);
 
             //definition de la requete SQL à éxecuter
-            $req = "SELECT idUtilisateur, nom, prenom, administrateur FROM Utilisateur where idUtilisateur = '$login' and motDePasse = '$mdp' ";
+            $req = "SELECT idUtilisateur, nom, prenom, administrateur FROM utilisateur where idUtilisateur = '$login' and motDePasse = '$mdp' ";
 
             //demande d'execution de la requete passer en parametre
             $res = $objPdo->query($req);
@@ -40,19 +40,18 @@ class M_Utilisateur{
     }
 
     /**
-     * @brief Fonction permettant de récuperer les utilisateur via leur nom et prenom(sera modifier pour prendre l'identifiant)
-     * @param $name 'Le nom de l'utilisateur'
-     * @param $surname 'Le prenom de l'utilisateur'
+     * @brief Fonction permettant de récuperer les utilisateur via leur identifiant)
+     * @param $id 'L'identifiant cacher de l'utilisateur'
      * @return mixed
      */
-    public static function getUtilisateurByName($name, $surname)
+    public static function getUtilisateurByID($id)
     {
 
         //on recupere une instance de la classe M_connexion qui etablit une connexion à la base de données
         $objPdo = M_connexion::getPdoConnexion();
 
         //definition de la requete SQL à éxecuter
-        $req = "SELECT mailCompte, nom, prenom, dateNaissance, genre, numTel  FROM Utilisateur where nom = '$name' and prenom = '$surname'";
+        $req = "SELECT idUtilisateur, mailCompte, nom, prenom, dateNaissance, genre, numTel, administrateur  FROM utilisateur where idUtilisateur = '$id'";
 
         //demande d'execution de la requete passer en parametre
         $res = $objPdo->query($req);
@@ -79,7 +78,7 @@ class M_Utilisateur{
         $objPdo = M_connexion::getPdoConnexion();
 
         //definition de la requete SQL à éxecuter
-        $req = "SELECT mailCompte, nom, prenom, dateNaissance, genre, numTel FROM Utilisateur";
+        $req = "SELECT mailCompte, nom, prenom, dateNaissance, genre, numTel FROM utilisateur";
 
         //demande d'execution de la requete passer en parametre
         $res = $objPdo->query($req);
@@ -115,13 +114,13 @@ class M_Utilisateur{
         $date = new DateTime();
         $idUser =  $date->getTimestamp().$nom[0].$prenom[0];
         $today = date('Y-m-d');
-        $etat = "A";
+        $etat = "Actif";
 
         //cryptage de la valeur du mots de passe
         $mdp = sha1($mdp);
 
         //definition de la requete SQL à éxecuter
-        $sql = 'INSERT INTO Utilisateur(idUtilisateur, dateCreationCompte, mailCompte, etatCompte, nom, prenom, dateNaissance, genre, numTel, motDePasse)'.
+        $sql = 'INSERT INTO utilisateur(idUtilisateur, dateCreationCompte, mailCompte, etatCompte, nom, prenom, dateNaissance, genre, numTel, motDePasse)'.
             'VALUES(:idUser, :today, :mail, :etat, :nom, :prenom, :birthday, :genre, :phone, :mdp)';
 
         //demande d'execution de la requete passer en parametre
@@ -140,9 +139,11 @@ class M_Utilisateur{
             ':mdp' => $mdp
         ]);
 
+        $data = self::getUtilisateurByID($idUser);
+
         //retourne un tableau contenant toutes les lignes du jeu d'enregistrements
         //ou un tableau vide si aucun enregistrement sont trouvés
-        return $today;
+        return $data;
 
     }
 }

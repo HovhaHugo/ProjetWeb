@@ -25,11 +25,10 @@ switch ($action) {
 
 
         //appel à la passerelle
-        $result = M_Utilisateur::setUtilisateur($mail, $nom, $prenom, $birthday, $sexe, $phone, $mdp);
+        $result = M_utilisateur::setUtilisateur($mail, $nom, $prenom, $birthday, $sexe, $phone, $mdp);
 
         if ($result) {
-            echo("Initial : ".$nom[0].$prenom[0]."       Id = ".$date->getTimestamp().$result);
-            $_SESSION['id']=$date->getTimestamp().$result;
+            $_SESSION['id']=$result[0]["idUtilisateur"];
             $_SESSION['nom'] = $result[0]["nom"];
             $_SESSION['prenom']= $result[0]["prenom"];
             if($result[0]["administrateur"] == 1){
@@ -37,9 +36,10 @@ switch ($action) {
             }
             header('Location: index.php');
         } else {
-            session_destroy();
+            echo("il y a une couille");
+            /*session_destroy();
             header('Location: index.php');
-            include 'vues/V_connexion.php';
+            include 'vues/V_connexion.php';*/
         }
         break;
 }

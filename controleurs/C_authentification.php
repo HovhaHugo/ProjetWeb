@@ -17,7 +17,7 @@ switch ($action) {
         $mdp = $_POST["mdp"];
 
         //appel à la passerelle
-        $result = M_Utilisateur::getUtilisateurByLogin($login, $mdp);
+        $result = M_utilisateur::getUtilisateurByLogin($login, $mdp);
 
         if ($result) {
             $_SESSION['nom'] = $result[0]["nom"];

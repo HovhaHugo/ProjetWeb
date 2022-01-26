@@ -10,7 +10,7 @@ switch ($action) {
 
     //Affichage des données de l'utilisateur.
     case 'affichage':
-        $resultat = M_Utilisateur::getUtilisateurByName($_SESSION["nom"],$_SESSION["prenom"]);
+        $resultat = M_utilisateur::getUtilisateurByID($_SESSION["id"]);
         $utilisateur= $resultat[0];
         include 'vues/V_utilisateur.php';
         break;

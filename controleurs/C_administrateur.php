@@ -10,7 +10,7 @@ switch ($action) {
 
     //Affichage des utilisateurs
     case 'utilisateur':
-        $utilisateur = M_Utilisateur::getUtilisateurs();
+        $utilisateur = M_utilisateur::getUtilisateurs();
         //print_r($utilisateur);
         include 'vues/V_administrateur.php';
         break;
