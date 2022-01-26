@@ -83,7 +83,7 @@ class M_Utilisateur{
         $objPdo = M_connexion::getPdoConnexion();
 
         //definition de la requete SQL à éxecuter
-        $req = "SELECT nom, prenom FROM Utilisateur ";
+        $req = "SELECT nom, prenom FROM Utilisateur";
 
         //demande d'execution de la requete passer en parametre
         $res = $objPdo->query($req);

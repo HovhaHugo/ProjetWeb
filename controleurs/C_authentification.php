@@ -20,7 +20,7 @@ switch ($action) {
         $result = M_Utilisateur::getUtilisateur($login, $mdp);
 
         if ($result) {
-            echo($result[0]["nom"]);
+            //echo($result[0]["nom"]);
             $_SESSION['nom'] = $result[0]["nom"];
             $_SESSION['prenom']= $result[0]["prenom"];
             if($result[0]["administrateur"] == 1){
